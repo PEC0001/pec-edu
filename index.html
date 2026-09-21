@@ -721,6 +721,365 @@ html.pec-authed #loginGate{ display:none; }
   font-size:12px;
   color:var(--muted);
 }
+
+/* ============================================================
+   STUDENT PORTAL ACCESS PAGE — shared UI system
+   Matches the dashboard page without changing access or login logic.
+   ============================================================ */
+:root{
+  --topbar-h:64px;
+  --portal-bg:#f5f7fb;
+  --portal-surface:#ffffff;
+  --portal-surface-soft:#f8fafc;
+  --portal-border:#e4e9f2;
+  --portal-ink:#182338;
+  --portal-muted:#71809a;
+  --portal-blue:#3156d8;
+  --portal-blue-soft:#edf1ff;
+  --portal-teal:#12a889;
+  --portal-teal-soft:#e7f8f3;
+  --portal-purple:#7657d9;
+  --portal-purple-soft:#f0edff;
+  --portal-coral:#df746a;
+  --portal-shadow:0 12px 32px rgba(29,48,89,.07);
+  --portal-shadow-hover:0 18px 40px rgba(29,48,89,.12);
+}
+html{ background:var(--portal-bg); }
+body{
+  background:
+    radial-gradient(circle at 88% 0%,rgba(49,86,216,.07),transparent 26rem),
+    var(--portal-bg);
+  color:var(--portal-ink);
+  font-family:'Inter',sans-serif;
+}
+
+.top-bar{
+  min-height:var(--topbar-h);
+  padding:12px 28px;
+  border-bottom:1px solid rgba(255,255,255,.14);
+  background:linear-gradient(110deg,#152341 0%,#203665 62%,#2a4782 100%);
+  box-shadow:0 5px 18px rgba(15,31,63,.15);
+}
+.top-bar-brand{ gap:12px; }
+.top-bar-logo{
+  height:36px;
+  border-radius:10px;
+  box-shadow:0 3px 12px rgba(0,0,0,.15);
+}
+.top-bar-title{
+  font-family:'Inter',sans-serif;
+  font-size:15px;
+  font-weight:700;
+  letter-spacing:-.2px;
+}
+.live-clock,.theme-toggle{
+  min-height:36px;
+  border-radius:10px;
+  background:rgba(255,255,255,.09);
+  border-color:rgba(255,255,255,.16);
+}
+.theme-toggle{ padding:8px 12px; }
+
+.today-classes-card{
+  top:calc(var(--topbar-h) + 16px);
+  right:24px;
+  width:300px;
+  padding:16px;
+  border:1px solid var(--portal-border);
+  border-radius:16px;
+  background:rgba(255,255,255,.9);
+  box-shadow:var(--portal-shadow);
+  backdrop-filter:blur(10px);
+}
+.today-classes-card h4{
+  margin-bottom:12px;
+  font-family:'Inter',sans-serif;
+  font-size:11px;
+  letter-spacing:.3px;
+  text-transform:uppercase;
+  color:var(--portal-muted);
+}
+.today-classes-card h4 span.day-name{ color:var(--portal-blue); }
+.today-classes-item{
+  padding:10px 12px;
+  border-radius:11px;
+  border-color:#e8edf5;
+  background:var(--portal-surface-soft);
+}
+.today-classes-item .time{ color:var(--portal-blue); }
+
+.home-shell{
+  max-width:1220px;
+  padding:48px 36px 72px;
+}
+.page-heading{
+  text-align:left;
+  margin-bottom:30px;
+}
+.page-heading h1{
+  font-family:'Inter',sans-serif;
+  font-size:30px;
+  font-weight:800;
+  letter-spacing:-.7px;
+  color:var(--portal-ink);
+  margin-bottom:8px;
+}
+.page-heading h1::before{
+  content:'STUDENT PORTAL';
+  display:block;
+  margin-bottom:8px;
+  color:var(--portal-blue);
+  font-family:'Inter',sans-serif;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:1.35px;
+}
+.page-heading .rule{
+  width:48px;
+  height:4px;
+  margin:0 0 12px;
+  border-radius:999px;
+  background:linear-gradient(90deg,var(--portal-blue),#73d6bc);
+}
+.page-heading p{
+  max-width:650px;
+  margin:0;
+  color:var(--portal-muted);
+  font-size:13px;
+  line-height:1.65;
+}
+
+.panel-grid{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:18px;
+  margin-bottom:24px;
+}
+.panel-card{
+  min-height:294px;
+  padding:28px 24px 22px;
+  border:1px solid var(--portal-border);
+  border-radius:16px;
+  background:var(--portal-surface);
+  box-shadow:var(--portal-shadow);
+  transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;
+}
+.panel-card:hover{
+  transform:translateY(-4px);
+  border-color:#cbd6ee;
+  box-shadow:var(--portal-shadow-hover);
+}
+.panel-card .top-accent{ height:4px; }
+.panel-icon{
+  width:48px;
+  height:48px;
+  margin-bottom:16px;
+  border-radius:13px;
+  font-family:'Inter',sans-serif;
+  font-size:17px;
+  font-weight:800;
+}
+.panel-role-tag{
+  margin-bottom:12px;
+  padding:4px 9px;
+  border-radius:7px;
+  font-family:'Inter',sans-serif;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.8px;
+}
+.panel-card h2{
+  font-family:'Inter',sans-serif;
+  font-size:18px;
+  font-weight:800;
+  letter-spacing:-.25px;
+  margin-bottom:8px;
+}
+.panel-card p.desc{
+  font-size:12.5px;
+  line-height:1.6;
+  margin-bottom:18px;
+}
+.panel-scope{
+  margin-bottom:20px;
+  padding:9px 11px;
+  border-radius:9px;
+  font-size:11px;
+  background:var(--portal-surface-soft);
+  border-color:var(--portal-border);
+  color:var(--portal-muted);
+}
+.panel-scope b{ color:var(--portal-ink); }
+.panel-enter{
+  padding:9px 13px;
+  border-radius:9px;
+  font-size:12px;
+  box-shadow:0 4px 10px rgba(25,48,100,.08);
+}
+.panel-card:hover .panel-enter{ gap:11px; }
+
+.panel-admin .top-accent,.panel-admin .panel-enter{ background:var(--portal-blue); }
+.panel-admin .panel-icon{ background:var(--portal-blue); color:#fff; }
+.panel-admin .panel-role-tag{ background:var(--portal-blue-soft); color:var(--portal-blue); }
+.panel-admin:hover{ border-color:var(--portal-blue); }
+.panel-academia .top-accent,.panel-academia .panel-enter{ background:var(--portal-teal); }
+.panel-academia .panel-icon{ background:var(--portal-teal); color:#fff; }
+.panel-academia .panel-role-tag{ background:var(--portal-teal-soft); color:var(--portal-teal); }
+.panel-academia:hover{ border-color:var(--portal-teal); }
+.panel-teachers .top-accent,.panel-teachers .panel-enter{ background:var(--portal-coral); }
+.panel-teachers .panel-icon{ background:var(--portal-coral); color:#fff; }
+.panel-teachers .panel-role-tag{ background:#fff0ee; color:var(--portal-coral); }
+.panel-teachers:hover{ border-color:var(--portal-coral); }
+.panel-examination .top-accent,.panel-examination .panel-enter{ background:var(--portal-purple); }
+.panel-examination .panel-icon{ background:var(--portal-purple); color:#fff; }
+.panel-examination .panel-role-tag{ background:var(--portal-purple-soft); color:var(--portal-purple); }
+.panel-examination:hover{ border-color:var(--portal-purple); }
+
+.panel-incharge{
+  order:-1;
+  min-height:190px;
+  gap:24px;
+  padding:28px 30px;
+  background:linear-gradient(135deg,#172643 0%,#284479 58%,#172643 100%);
+  border-color:#203765;
+}
+.panel-incharge .panel-icon{
+  background:#f0b957;
+  color:#172643;
+  border-radius:14px;
+  box-shadow:0 0 0 6px rgba(240,185,87,.14);
+}
+.panel-incharge .panel-role-tag{
+  background:rgba(240,185,87,.16);
+  color:#ffd88a;
+  border-color:rgba(240,185,87,.35);
+}
+.panel-incharge h2{ font-size:21px; }
+.panel-incharge .panel-scope{ background:rgba(255,255,255,.07); border-color:rgba(255,255,255,.15); }
+.panel-incharge .panel-scope b{ color:#edf2ff; }
+.panel-incharge .panel-enter{ background:#f0b957; color:#172643; }
+.panel-incharge:hover{ border-color:#f0b957; }
+.footer-note{ margin-top:28px; color:var(--portal-muted); }
+
+/* Password dialog and login surface */
+.panel-pass-card{
+  border:1px solid var(--portal-border);
+  border-radius:18px;
+  box-shadow:0 22px 60px rgba(21,35,69,.2);
+}
+.panel-pass-card h2{
+  font-family:'Inter',sans-serif;
+  letter-spacing:-.3px;
+}
+.panel-pass-card button[type="submit"]{ border-radius:9px; }
+
+@media(max-width:900px){
+  .home-shell{ padding:38px 22px 58px; }
+  .today-classes-card{ right:18px; }
+}
+@media(max-width:720px){
+  :root{ --topbar-h:58px; }
+  .top-bar{ min-height:var(--topbar-h); padding:9px 14px; }
+  .top-bar-logo{ height:29px; border-radius:8px; }
+  .top-bar-title{ font-size:12px; }
+  .home-shell{ padding:28px 14px 48px; }
+  .page-heading{ margin-bottom:22px; }
+  .page-heading h1{ font-size:24px; }
+  .panel-grid{ grid-template-columns:1fr; }
+  .panel-card,.panel-incharge{ min-height:0; }
+  .panel-incharge{ order:-1; padding:24px 20px; }
+  .panel-incharge .panel-enter{ width:100%; justify-content:center; }
+}
+@media(max-width:400px){
+  .top-bar-title{ font-size:11px; }
+  .theme-toggle{ padding:7px 9px; }
+  .today-classes-card{ width:calc(100vw - 24px); right:12px; }
+}
+
+/* Dark mode parity with the progress dashboard */
+html[data-theme="dark"]{
+  color-scheme:dark;
+  --portal-bg:#0d1422;
+  --portal-surface:#151e30;
+  --portal-surface-soft:#1a2639;
+  --portal-border:#2b3850;
+  --portal-ink:#edf2ff;
+  --portal-muted:#9aa8c2;
+  --portal-blue:#86a1ff;
+  --portal-blue-soft:#1c2d57;
+  --portal-teal:#62d8bd;
+  --portal-teal-soft:#153c39;
+  --portal-purple:#a996ff;
+  --portal-purple-soft:#2a2450;
+  --portal-coral:#f08c82;
+  --portal-shadow:0 14px 32px rgba(0,0,0,.24);
+  --portal-shadow-hover:0 18px 40px rgba(0,0,0,.34);
+}
+html[data-theme="dark"] body{
+  background:
+    radial-gradient(circle at 88% 0%,rgba(70,101,205,.16),transparent 26rem),
+    var(--portal-bg);
+  color:var(--portal-ink);
+}
+html[data-theme="dark"] .top-bar{
+  background:linear-gradient(110deg,#0d172b 0%,#17284b 62%,#203663 100%);
+  border-bottom-color:rgba(134,161,255,.38);
+}
+html[data-theme="dark"] .today-classes-card{
+  background:rgba(21,30,48,.92);
+  border-color:var(--portal-border);
+}
+html[data-theme="dark"] .today-classes-item{
+  background:var(--portal-surface-soft);
+  border-color:var(--portal-border);
+}
+html[data-theme="dark"] .page-heading h1,
+html[data-theme="dark"] .panel-card h2,
+html[data-theme="dark"] .panel-scope b{
+  color:var(--portal-ink);
+}
+html[data-theme="dark"] .panel-card{
+  background:var(--portal-surface);
+  border-color:var(--portal-border);
+  box-shadow:var(--portal-shadow);
+}
+html[data-theme="dark"] .panel-card:hover{
+  border-color:#405170;
+  box-shadow:var(--portal-shadow-hover);
+}
+html[data-theme="dark"] .panel-scope{
+  background:var(--portal-surface-soft);
+  border-color:var(--portal-border);
+  color:var(--portal-muted);
+}
+html[data-theme="dark"] .panel-teachers .panel-role-tag{
+  background:#4a2728;
+  color:#f0a29b;
+}
+html[data-theme="dark"] .panel-incharge{
+  background:linear-gradient(135deg,#111d35 0%,#203b6b 58%,#111d35 100%);
+  border-color:#2d4777;
+}
+html[data-theme="dark"] .panel-incharge .panel-scope{
+  background:rgba(255,255,255,.07);
+  border-color:rgba(255,255,255,.15);
+}
+html[data-theme="dark"] .panel-pass-card{
+  background:var(--portal-surface);
+  border-color:var(--portal-border);
+}
+html[data-theme="dark"] .panel-pass-card input{
+  background:#1b273b;
+  border-color:#35445f;
+  color:var(--portal-ink);
+}
+html[data-theme="dark"] .panel-pass-card input:focus{
+  border-color:var(--portal-blue);
+  box-shadow:0 0 0 3px rgba(134,161,255,.18);
+}
+html[data-theme="dark"] .login-card{
+  border-color:rgba(134,161,255,.35);
+  box-shadow:0 25px 60px rgba(0,0,0,.45);
+}
 </style>
 </head>
 <body>
